@@ -1,44 +1,46 @@
 import { useRouter } from 'next/router'
 
-export async function getStaticProps(context) {
-  const { params } = context
+// export async function getStaticProps(context) {
+//   const { params } = context
 
-  const data = await fetch(
-    `https://jsonplaceholder.typicode.com/todos/${params.id}`
-  )
+//   const data = await fetch(
+//     `https://jsonplaceholder.typicode.com/todos/${params.id}`
+//   )
 
-  const user = await data.json()
+//   const user = await data.json()
 
-  return {
-    props: { user }
-  }
-}
+//   return {
+//     props: { user }
+//   }
+// }
 
-export async function getStaticPaths() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+// export async function getStaticPaths() {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/todos')
 
-  const data = await response.json()
+//   const data = await response.json()
 
-  const paths = data.map((user) => {
-    return {
-      params: {
-        id: `${user.id}`
-      }
-    }
-  })
+//   const paths = data.map((user) => {
+//     return {
+//       params: {
+//         id: `${user.id}`
+//       }
+//     }
+//   })
 
-  return { paths, fallback: true }
-}
+//   return { paths, fallback: true }
+// }
 
 export default function UsersEdit({ user }) {
-  // const { query } = useRouter()
+  const { query } = useRouter()
 
-  // const uesrId = query?.id
+  const uesrId = query?.id
+
+  console.log('query: ', query)
   return (
     <>
       <h2>User Edit</h2>
-      <p>Olha o ID do cabra: {user.id}</p>
-      <p>Title: {user.title}</p>
+      <p>Olha o ID do cabra: {uesrId}</p>
+      {/* <p>Title: {uesrId.title}</p> */}
     </>
   )
 }
