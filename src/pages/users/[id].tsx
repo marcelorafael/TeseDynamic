@@ -30,7 +30,7 @@ import { useRouter } from 'next/router'
 //   return { paths, fallback: true }
 // }
 
-export default function UsersEdit({ user }) {
+export default function UsersEdit() {
   const { query } = useRouter()
 
   const uesrId = query?.id

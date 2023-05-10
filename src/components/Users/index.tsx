@@ -1,7 +1,9 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
-export default function Users({ usersList }) {
+// { usersList }
+
+export default function Users() {
   const { push } = useRouter()
 
   const users = [
@@ -18,7 +20,7 @@ export default function Users({ usersList }) {
     <>
       <h2>Users Home</h2>
 
-      {usersList.map((user) => (
+      {users.map((user) => (
         <div
           key={user.id}
           onClick={() => handleEdituser(user.id)}
@@ -31,7 +33,7 @@ export default function Users({ usersList }) {
           }}
         >
           <p>Id: {user.id}</p>
-          <p>Name: {user.title}</p>
+          {/* <p>Name: {user.title}</p> */}
         </div>
       ))}
     </>
